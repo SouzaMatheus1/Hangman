@@ -27,14 +27,16 @@ def concat_word(word):
     return p
 
 palavra_certa = definition_word()
-palavra_palpite = []
 print(f"A palavra escolhida tem {len(palavra_certa)} letras!")
 print(palavra_certa)
+palavra_palpite = []
 
+print(palavra_palpite)
 # Começo do jogo
 entrada = int(input("1 - Começar.\n0 - Sair.\n"))
 if entrada == 1:
         while True:
+            cont_letra = 0
             palpite = input("Digite uma letra: ")
             palpite = palpite.upper()
             for i in palavra_certa:
@@ -42,8 +44,8 @@ if entrada == 1:
                 if i == palpite:
                     print(f'Letra "{palpite}" adicionada!')
                     index_letra = find_index(palavra_certa, palpite)
+                    print(index_letra, palpite)
                     palavra_palpite.insert(index_letra, palpite)
-                    x = palavra_certa.replace(palpite, '')
                     print('palpite', palavra_palpite, len(palavra_palpite))
                     print('certa', palavra_certa, len(palavra_certa))
             if len(palavra_palpite) == len(palavra_certa):
@@ -54,4 +56,3 @@ if entrada == 1:
             
 else:
     print("Obrigado por jogar!")
-    
