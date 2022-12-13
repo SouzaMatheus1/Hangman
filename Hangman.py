@@ -5,34 +5,44 @@ import os
 def find_index(p_certa, palpite):
     for i in p_certa:
         if i == palpite:
-            return p_certa.index(i)
+            return p_certa.index(p_certa[i])
             
 
-# Banco de dados palavras
+# txt with all words
 df = pd.read_csv('Lista-de-Palavras.txt', sep = ' ')
 df = df.values
 
+# Word definition
 def definition_word():
-#Definição da palavra sorteada
     palavra = rd.randrange(0, 29857)
     palavra_certa  = df[palavra]
     for i in palavra_certa:
         palavra_certa = i
     return palavra_certa
 
+# Concatenate word
 def concat_word(word):
     p = ''
     for i in word:
         p += i
     return p
 
-palavra_certa = definition_word()
-print(f"A palavra escolhida tem {len(palavra_certa)} letras!")
-print(palavra_certa)
-palavra_palpite = []
+# Create a empty array for guess
+def empty_array(word):
+    l = []
+    for i in range(len(word)):
+        l.append('_')
+    return l
 
-print(palavra_palpite)
-# Começo do jogo
+palavra_certa = list(definition_word())
+print(f"A palavra escolhida tem {len(palavra_certa)} letras!")
+print(concat_word(palavra_certa))
+palavra_palpite = empty_array(palavra_certa)
+palavra_erro = []
+
+print(f"A palavra tem {len(palavra_palpite)} letras!")
+
+# Start game
 entrada = int(input("1 - Começar.\n0 - Sair.\n"))
 if entrada == 1:
         while True:
@@ -40,19 +50,16 @@ if entrada == 1:
             palpite = input("Digite uma letra: ")
             palpite = palpite.upper()
             for i in palavra_certa:
-                # i = letra da palavra sorteada
                 if i == palpite:
                     print(f'Letra "{palpite}" adicionada!')
-                    index_letra = find_index(palavra_certa, palpite)
-                    print(index_letra, palpite)
-                    palavra_palpite.insert(index_letra, palpite)
-                    print('palpite', palavra_palpite, len(palavra_palpite))
-                    print('certa', palavra_certa, len(palavra_certa))
-            if len(palavra_palpite) == len(palavra_certa):
-                print('oi')
-                break
-           
-        print(concat_word(palavra_palpite))
-            
+                    # index_letra = find_index(palavra_certa, palpite)
+                    index_letra = palavra_certa.index(i)
+                    palavra_palpite.pop(index_letra)
+                    palavra_certa[index_letra] = "_"
+                    palavra_palpite.insert(index_letra, i)
+                    #print('Palavra:', concat_word(palavra_palpite))
+                    print('aaa',palavra_certa, palavra_palpite)
+                    # if (concat_word(palavra_palpite)) == concat_word(palavra_certa):
+                    #     print("Parabéns bundão!")
 else:
     print("Obrigado por jogar!")
