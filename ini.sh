@@ -25,7 +25,16 @@ if [ "" = "$BIBLIOTECA_RANDOM" ]; then
   echo '\n-------------------------------------------------------'
   echo 'Biblioteca Random instalado com sucesso.'
 else
-  echo "Biblioteca Pandas já instalado."
+  echo "Biblioteca Random já instalado."
+fi
+
+if [ "" = "$BIBLIOTECA_OS" ]; then
+  pip install os
+
+  echo '\n-------------------------------------------------------'
+  echo "Biblioteca OS instalada com suscesso."
+else
+  echo "Biblioteca OS já instalada."
 fi
 
 echo '\n-------------------------------------------------------'

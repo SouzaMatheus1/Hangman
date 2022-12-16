@@ -2,7 +2,7 @@ import pandas as pd
 from functions import *
 
 print("Bem-vindo ao jogo da forca supremo!")
-print("Welcome to supreme hangman game!")
+print("Welcome to supreme hangman game!\n")
 
 print("Escolha o idioma: ")
 print("Select the leanguage: ")

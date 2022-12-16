@@ -16,6 +16,12 @@ def concat_word(word):
         p += i
     return p
 
+def palavra_clone(palavra_certa):
+    palavra_cone = ''
+    for i in palavra_certa:
+        palavra_cone += i 
+    return palavra_cone
+        
 # Create a empty array for guess
 def empty_array(word):
     l = []
@@ -49,11 +55,12 @@ def trophy():
                
 def pt_game(df):
     palavra_certa = list(definition_word(df))
+    palavra_c = palavra_clone(palavra_certa)
     palavra_palpite = empty_array(palavra_certa)
     letras_erradas = []
     chances = 0
     
-    # Start game
+    # Iniciar jogo
     entrada = int(input("1 - Iniciar jogo.\n0 - Sair.\n"))
     if entrada == 1:
         os.system('cls')
@@ -63,9 +70,12 @@ def pt_game(df):
             palpite = palpite.upper()
             if palpite not in palavra_certa:
                 letras_erradas.append(palpite)
-                print('Letra incorreta!\n')
+                print('\nLetra incorreta!')
                 chances += 1
+                print('Palavra:', concat_word(palavra_palpite))
+                print(f'Você tem mais {7 - chances} chances restantes!\n')
                 if chances == 7:
+                    print(f'A palavra secreta era {palavra_c}')
                     print("Você perdeu! Tente novamente!")
                     break
             for i in palavra_certa:
@@ -94,6 +104,7 @@ def pt_game(df):
     
 def en_game(df):
     palavra_certa = list(definition_word(df))
+    palavra_c = palavra_clone(palavra_certa)
     palavra_palpite = empty_array(palavra_certa)
     letras_erradas = []
     chances = 0
@@ -108,9 +119,12 @@ def en_game(df):
             palpite = palpite.lower()
             if palpite not in palavra_certa:
                 letras_erradas.append(palpite)
-                print('Letter incorrect!\n')
+                print('\nLetter incorrect!')
                 chances += 1
+                print('Word:', concat_word(palavra_palpite))
+                print(f'You have {7 - chances} more chances!\n')
                 if chances == 7:
+                    print(f'The secret word was {palavra_c}')
                     print("You lose! Try again!")
                     break
             for i in palavra_certa:
