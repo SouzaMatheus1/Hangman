@@ -21,14 +21,13 @@ def palavra_clone(palavra_certa):
     for i in palavra_certa:
         palavra_cone += i 
     return palavra_cone
-        
+
 # Create a empty array for guess
 def empty_array(word):
     l = []
     for i in range(len(word)):
         l.append('_')
     return l
-
 
 # Create a trophy
 def trophy():
@@ -52,7 +51,7 @@ def trophy():
                         #################                
                         #################                               
                                      """
-               
+
 def pt_game(df):
     palavra_certa = list(definition_word(df))
     palavra_c = palavra_clone(palavra_certa)
@@ -101,7 +100,7 @@ def pt_game(df):
     else:
         os.system('cls')
         print("Comando inválido. Tente novamente.")
-    
+
 def en_game(df):
     palavra_certa = list(definition_word(df))
     palavra_c = palavra_clone(palavra_certa)
